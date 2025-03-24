@@ -1,27 +1,37 @@
+# 🦄 DeFi Price Streaming
 
-# DeFi Price Streaming
+Ce programme en Rust permet de streamer les données de prix depuis **Uniswap V2 ou V3**, en fonction du réseau (Ethereum, Polygon, BNB), des adresses de tokens et des frais de pool (pour V3).
 
-This program streams price data from Uniswap V2 or V3, allowing users to specify token addresses for Uniswap V2 or chain (Ethereum, Polygon, BNB), token addresses, and pool fee for Uniswap V3.
+## 🚀 Fonctionnalités
 
-## Installation and Running the Program
+- Support d’Uniswap V2 et V3
+- Streaming des prix en temps réel
+- Support multi-réseaux : Ethereum, Polygon, BNB
+- Configuration en ligne de commande
+- Utilisation d’`ethers-rs` pour l’interaction avec les blockchains
 
-### Prerequisites
-- Rust programming language
-- Cargo (Rust's package manager)
+## 🛠️ Technologies
 
-### Installation
-1. Clone the repository:
-   ```
-   git clone https://github.com/clementroure/price-streaming
-   ```
-2. Navigate to the project directory:
-   ```
-   cd price_streaming
-   ```
-3. Install dependencies as specified in cargo.toml:
-   ```
-   cargo build
-   ```
+- Rust
+- Cargo
+- ethers-rs
+- Tokio (asynchrone)
+- WebSockets & RPC Ethereum
+
+## 📦 Installation
+
+### Prérequis
+
+- [Rust](https://www.rust-lang.org/)
+- Cargo (inclus avec Rust)
+
+### Étapes
+
+```bash
+git clone https://github.com/Rayane-45/Uniswap-pool-Tracker.git
+cd Uniswap-pool-Tracker
+cargo build
+
    
 ### Running the Program
 Run the program using Cargo:
@@ -64,23 +74,14 @@ Supported networks are Ethereum, Polygon, and BNB. Valid fee values are 500, 300
   cargo run bnb uniswapv3 0x55d398326f99059fF775485246999027B3197955 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c 3000
   ```
 
-## Code Explanation
+🧠 Structure du code
+config: initialisation des paramètres via init_args()
+uniswap: modules spécifiques V2 et V3
+main.rs: exécution asynchrone selon la version Uniswap
 
-### Modules
-- `config`: Contains `Config` struct and `init_args()` function for initializing program configurations.
-- `uniswap`: Includes `uniswap_v2` and `uniswap_v3` modules for handling different Uniswap versions.
+❗ Gestion d’erreurs
+Vérification des arguments
+Support réseau limité aux chaînes prises en charge
+Messages d’erreur clairs en cas de mauvais usage
 
-### Main Components
-- `Config` struct: Holds the configuration parameters required for the program to run.
-- `init_args()`: Parses and validates command-line arguments, returning a `Config` object.
 
-### Error Handling
-The program checks for valid input arguments and network support for each Uniswap version. Errors are thrown for invalid inputs.
-
-### Network Requests
-- `rpc_url` and `ws_endpoint`: Constructed based on the provided network argument.
-- `ethers::providers::{Http, Provider, Ws}`: Used to interact with Ethereum and other blockchain networks.
-
-### Asynchronous Execution
-- The `main` function is an asynchronous entry point using `#[tokio::main]`.
-- It handles Uniswap V2 and V3 functionality based on user inputs.
