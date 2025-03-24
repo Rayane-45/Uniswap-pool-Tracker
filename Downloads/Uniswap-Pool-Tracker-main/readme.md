@@ -1,3 +1,9 @@
+## 👤 Auteur
+
+**Rayane Saadallah**  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/rayane-saadallah-5a42a5254/)
+
+
 # 🦄 DeFi Price Streaming
 
 Ce programme en Rust permet de streamer les données de prix depuis **Uniswap V2 ou V3**, en fonction du réseau (Ethereum, Polygon, BNB), des adresses de tokens et des frais de pool (pour V3).
